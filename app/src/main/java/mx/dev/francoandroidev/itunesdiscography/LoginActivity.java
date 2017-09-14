@@ -274,7 +274,7 @@ public class LoginActivity extends AppCompatActivity {
 
             //verify credentials
             correctPassword = DUMMY_PASSWORD.equals(password);
-            correctUser = DUMMY_USER.equals(DUMMY_USER);
+            correctUser = DUMMY_USER.equals(email);
 
             if(correctPassword && correctUser) {
                 return true;
