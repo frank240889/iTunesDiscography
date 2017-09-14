@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">iTunesDiscography</string>
+    <string name="title_activity_login">Iniciar Sesión</string>
+
+    <!-- Login strings -->
+    <string name="prompt_email">Nombre de usuario</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in">Iniciar sesión</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">La dirección de correo o el nombre de usuario es inválido</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">Contraseña incorrecta</string>
+    <string name="error_field_required">Este campo es requerido</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="error_not_allowed_character">No se permiten caracteres especiales, solo letras(mayúsculas y minúsculas) y números</string>
+    <string name="error_has_blank_spaces">No se permiten espacios en blanco</string>
+    <string name="error_is_too_long">La longitud minima del texto son 8 caracteres</string>
+    <string name="error_not_uppercase_letter">El texto debe tener al menos una letra mayúscula</string>
+    <string name="error_is_not_alphanumeric">El texto debe contener números y letras</string>
+    <string name="error_incorrect_user_or_password">Nombre de usuario y/o contraseña incorrectos.</string>
+    <string name="success_login">Iniciando sesión...</string>
+    <string name="sign_out">Cerrar sesión</string>
+    <string name="sign_out_dialog_description">¿Quieres cerrar tu sesión?</string>
+
+
+
+</resources>
