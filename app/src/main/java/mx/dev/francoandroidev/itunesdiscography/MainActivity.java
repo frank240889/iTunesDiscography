@@ -140,6 +140,7 @@ public class MainActivity extends AppCompatActivity{
                                 editor.apply();
                                 Intent intent = new Intent(MainActivity.this,LoginActivity.class);
                                 startActivity(intent);
+                                MainActivity.this.finish();
                             }
                         });
                 AlertDialog dialog =  builder.create();
