@@ -17,6 +17,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
+import mx.dev.francoandroidev.itunesdiscography.Constants;
 import mx.dev.francoandroidev.itunesdiscography.MainActivity;
 
 /**
@@ -29,10 +30,10 @@ public final class JsonParser {
     public static JSONObject getJSON(int requestType) {
         String jsonString = "";
         String requestedUrl = "";
-        if(requestType == MainActivity.REQUEST_CATEGORY) {
-            requestedUrl = "https://itunes.apple.com/WebObjects/MZStoreServices.woa/ws/genres?id=34";//"http://itunes.apple.com/search?term=genre&media=music&limit=50";
+        if(requestType == Constants.REQUEST_CATEGORY) {
+            requestedUrl = Constants.END_POINT_2;
         }
-        else if (requestType == MainActivity.REQUEST_ARTIST){
+        else if (requestType == Constants.REQUEST_ARTIST){
             //Not implemented yet
         }
         else {

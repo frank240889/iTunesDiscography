@@ -36,9 +36,9 @@ public class LoginActivity extends AppCompatActivity {
     /**
      * Dummy authentication
      */
-    private static final String DUMMY_USER = "Rootroot25";
+    private static final String DUMMY_USER = "admin";
 
-    private  static final String DUMMY_PASSWORD = "Rootroot25";
+    private  static final String DUMMY_PASSWORD = "admin";
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -101,42 +101,6 @@ public class LoginActivity extends AppCompatActivity {
             emailView.requestFocus();
             return;
         }
-        //has blank spaces?
-        if(StringUtilities.hasBlankSpace(email)){
-            enableFields();
-            emailView.setError(getString(R.string.error_has_blank_spaces));
-            emailView.requestFocus();
-            return;
-        }
-
-        if(StringUtilities.isTooShort(email)){
-            enableFields();
-            emailView.setError(getString(R.string.error_is_too_long));
-            emailView.requestFocus();
-            return;
-        }
-
-        if (StringUtilities.hasNotAllowedCharacters(email)) {
-            enableFields();
-            emailView.setError(getString(R.string.error_not_allowed_character));
-            emailView.requestFocus();
-            return;
-        }
-
-        if(!StringUtilities.isAlphanumeric(email)){
-            enableFields();
-            emailView.setError(getString(R.string.error_is_not_alphanumeric));
-            emailView.requestFocus();
-            return;
-        }
-
-        if(!StringUtilities.hasUpperCase(email)){
-            enableFields();
-            emailView.setError(getString(R.string.error_not_uppercase_letter));
-            emailView.requestFocus();
-            return;
-        }
-
 
         // Check for a valid password.
         if(StringUtilities.isFieldEmpty(password)) {
@@ -145,44 +109,6 @@ public class LoginActivity extends AppCompatActivity {
             passwordView.requestFocus();
             return;
         }
-        //has blank spaces?
-        if(StringUtilities.hasBlankSpace(password)){
-            enableFields();
-            passwordView.setError(getString(R.string.error_has_blank_spaces));
-            passwordView.requestFocus();
-            return;
-        }
-
-        if(StringUtilities.isTooShort(password)){
-            enableFields();
-            passwordView.setError(getString(R.string.error_is_too_long));
-            passwordView.requestFocus();
-            return;
-        }
-
-        if (StringUtilities.hasNotAllowedCharacters(password)) {
-            enableFields();
-            passwordView.setError(getString(R.string.error_not_allowed_character));
-            passwordView.requestFocus();
-            return;
-        }
-
-
-        if(!StringUtilities.isAlphanumeric(password)){
-            enableFields();
-            passwordView.setError(getString(R.string.error_is_not_alphanumeric));
-            passwordView.requestFocus();
-            return;
-        }
-
-        if(!StringUtilities.hasUpperCase(password)){
-            enableFields();
-            passwordView.setError(getString(R.string.error_not_uppercase_letter));
-            passwordView.requestFocus();
-            return;
-        }
-
-
 
         //we should make all network request in asynchronous way
         //because they can take few seconds and the  main process could
@@ -253,6 +179,7 @@ public class LoginActivity extends AppCompatActivity {
         private final String password;
         private boolean correctPassword = false;
         private boolean correctUser = false;
+        private Toast toast;
 
         UserLoginTask(String email, String password) {
             this.email = email;
@@ -260,6 +187,11 @@ public class LoginActivity extends AppCompatActivity {
         }
         @Override
         protected void onPreExecute(){
+
+            toast = Toast.makeText(getApplicationContext(),"",Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER,0,0);
+            toast.setText(getString(R.string.autenticating));
+            toast.show();
             showProgress(true);
         }
 
@@ -267,7 +199,7 @@ public class LoginActivity extends AppCompatActivity {
         protected Boolean doInBackground(Void... params) {
             try {
                 // Simulate network access.
-                Thread.sleep(3000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 return false;
             }
@@ -286,9 +218,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(final Boolean success) {
             asyncLogin = null;
-            showProgress(false);
-            Toast toast = Toast.makeText(getApplicationContext(),"",Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.CENTER,0,0);
+
 
 
             if (success) {
@@ -305,6 +235,7 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
 
             } else {
+                showProgress(false);
                 toast.setText(R.string.error_incorrect_user_or_password);
                 enableFields();
                 toast.show();

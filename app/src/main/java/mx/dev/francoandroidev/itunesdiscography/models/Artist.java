@@ -6,14 +6,36 @@ package mx.dev.francoandroidev.itunesdiscography.models;
  */
 
 public final class Artist extends Model {
-    private String artistName = "Unknown";
-    private String albumName = "Unknown";
-    private String pricePerDisc = "0";
-    private String pricePerTrack = "0";
-    private String country = "Unknown";
-    private String currency = "Unknown";
+    private long id = -1;
+    private String artistName = "";
+    private String albumName = "";
+    private String pricePerDisc = "";
+    private String pricePerTrack = "";
+    private String country = "";
+    private String currency = "";
+    private int type = -1;
 
+    public Artist(){
 
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public Artist setId(long id) {
+        this.id = id;
+        return this;
+    }
+
+    public Artist setType(int type){
+        this.type = type;
+        return this;
+    }
+
+    public int getType(){
+        return this.type;
+    }
     public String getArtistName() {
         return artistName;
     }

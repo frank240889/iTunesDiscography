@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mx.dev.francoandroidev.itunesdiscography.R;
+import mx.dev.francoandroidev.itunesdiscography.models.Artist;
 import mx.dev.francoandroidev.itunesdiscography.models.Category;
 import mx.dev.francoandroidev.itunesdiscography.models.Model;
 
@@ -27,33 +28,55 @@ public class Adapter extends ArrayAdapter<Model> {
     private Context context;
     private int modelType;
     private List<Model> list;
+
     public Adapter(@NonNull Context context, int modelType, ArrayList list) {
         super(context, 0);
         this.context = context;
         this.modelType = modelType;
         this.list = list;
+        Log.d("type",modelType+"");
     }
 
     @Override
     public View getView(int position, View convertedView, ViewGroup parent){
+        if(this.modelType == Model.TYPE_ADAPTER_CATEGORY) {
+            Category category = (Category) list.get(position);
+            Log.d("position category", position + "");
+            ViewHolder viewHolder;
+            if (convertedView == null) {
+                LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertedView = layoutInflater.inflate(R.layout.category_item, null);
+                viewHolder = new ViewHolder();
+                viewHolder.imageView = (ImageView) convertedView.findViewById(R.id.cover);
+                viewHolder.genre = (TextView) convertedView.findViewById(R.id.genre);
+                viewHolder.idGenre = (TextView) convertedView.findViewById(R.id.idGenre);
+                convertedView.setTag(viewHolder);
+            } else {
+                viewHolder = (ViewHolder) convertedView.getTag();
+            }
 
-        Category category =(Category) list.get(position);
-
-        ViewHolder viewHolder;
-        if (convertedView == null) {
-            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertedView = layoutInflater.inflate(R.layout.category_item, null);
-            viewHolder = new ViewHolder();
-            viewHolder.imageView = (ImageView) convertedView.findViewById(R.id.cover);
-            viewHolder.genre = (TextView) convertedView.findViewById(R.id.genre);
-            viewHolder.idGenre = (TextView) convertedView.findViewById(R.id.idGenre);
-            convertedView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertedView.getTag();
+            viewHolder.genre.setText(category.getGenre());
+            viewHolder.idGenre.setTag(category.getId());
         }
+        else if(this.modelType == Model.TYPE_ADAPTER_ARTIST){
+            Artist artist = (Artist) list.get(position);
+            Log.d("position artist", position + "");
+            ViewHolder viewHolder;
+            if (convertedView == null) {
+                LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertedView = layoutInflater.inflate(R.layout.category_item, null);
+                viewHolder = new ViewHolder();
+                viewHolder.imageView = (ImageView) convertedView.findViewById(R.id.cover);
+                viewHolder.genre = (TextView) convertedView.findViewById(R.id.genre);
+                viewHolder.idGenre = (TextView) convertedView.findViewById(R.id.idGenre);
+                convertedView.setTag(viewHolder);
+            } else {
+                viewHolder = (ViewHolder) convertedView.getTag();
+            }
 
-        viewHolder.genre.setText( category.getGenre() );
-        viewHolder.idGenre.setTag(  category.getId() );
+            viewHolder.genre.setText(artist.getArtistName());
+            viewHolder.idGenre.setTag(artist.getId());
+        }
 
         return convertedView;
     }

@@ -8,6 +8,7 @@ public class Category extends Model{
     private String genre = "";
     private String urlImage = "";
     private long id = -1;
+    private int type = -1;
 
     //Option for construct objects
     //of two ways
@@ -42,14 +43,22 @@ public class Category extends Model{
         return this;
     }
 
+    public Category setId(long id) {
+        this.id = id;
+        return this;
+    }
 
     public long getId() {
         return id;
     }
 
-    public Category setId(long id) {
-        this.id = id;
+    public Category setType(int type) {
+        this.type = type;
         return this;
+    }
+
+    public int getType() {
+        return this.type;
     }
 
 }

@@ -23,7 +23,7 @@
     <string name="success_login">Iniciando sesión...</string>
     <string name="sign_out">Cerrar sesión</string>
     <string name="sign_out_dialog_description">¿Quieres cerrar tu sesión?</string>
-
+    <string name="autenticating">Verificando credenciales...</string>
 
 
 </resources>

@@ -13,4 +13,10 @@ public abstract class Model {
     public static final int TYPE_ADAPTER_CATEGORY = 1;
     public static final int TYPE_ADAPTER_ARTIST = 2;
     public static final int TYPE_ADAPTER_DISCOGRAPHY = 3;
+
+    public abstract Model setType(int model);
+    public abstract int getType();
+
+    public abstract Model setId(long id);
+    public abstract long getId();
 }
