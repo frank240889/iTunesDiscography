@@ -90,6 +90,7 @@ public class FragmentList extends Fragment {
         }
 
         Log.d("commit to dev branch","commit");
+        Log.d("another commit to dev","another commit to dev");
         asyncLoadData = new AsyncLoadData(requestType);
         asyncLoadData.execute();
     }
